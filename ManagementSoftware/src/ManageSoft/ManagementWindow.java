@@ -8,7 +8,7 @@ public class ManagementWindow extends JComponent {
     //TODO Add JList of room categories
     //TODO More JLables
     //TODO Add Custom logotype
-    
+
 
     private final int FPS = 40;
     private Manager manager;
@@ -45,6 +45,35 @@ public class ManagementWindow extends JComponent {
     }
 
     public void start(){
+        JFrame frame = new JFrame("Example");
+        JMenuBar menuBar = new JMenuBar();
+        JMenu fileMenu = new JMenu("File");
+        JMenu editMenu = new JMenu("Edit");
+
+        JMenuItem exitItem = new JMenuItem("Exit");
+
+        JMenuItem newItem = new JMenuItem("New");
+        JMenuItem removeItem = new JMenuItem("Remove");
+        JMenuItem editItem = new JMenuItem("Edit");
+
+        fileMenu.add(exitItem);
+
+        editMenu.add(newItem);
+        editMenu.add(editItem);
+        editMenu.add(removeItem);
+
+
+        menuBar.add(fileMenu);
+        menuBar.add(editMenu);
+
+        frame.setJMenuBar(menuBar);
+
+        frame.add(this);
+
+        frame.setSize(800, 600);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
+
         while(true) {
             manager.update(keyboard);
             try {
